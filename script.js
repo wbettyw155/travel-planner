@@ -480,7 +480,7 @@ function renderActiveDay() {
       <header class="day-card-header">
         <div class="day-title-wrap">
           <div class="day-title-row">
-            <h2><span aria-hidden="true">${getDayEmoji(day)}</span> ${escapeHtml(day.label)}｜${escapeHtml(day.theme || "未命名")}</h2>
+            <h2><span aria-hidden="true">${getDayEmoji(day)}</span> ${escapeHtml(day.label)}</h2>
             <span class="count-pill">${day.items.length} 個行程</span>
           </div>
           <div class="day-meta-row">
