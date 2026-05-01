@@ -245,6 +245,22 @@ h2 {
   overflow: visible;
 }
 
+.accounting-card > .accounting-section {
+  margin: 0 16px;
+}
+
+.accounting-card > .accounting-section:first-of-type {
+  margin-top: 16px;
+}
+
+.accounting-card > .accounting-section + .accounting-section {
+  margin-top: 12px;
+}
+
+.accounting-card > .accounting-section:last-of-type {
+  margin-bottom: 16px;
+}
+
 .day-card-header {
   padding: 24px 24px 22px;
   border-bottom: 1px solid var(--line);
@@ -478,6 +494,7 @@ h2 {
   background: var(--surface-soft);
 }
 
+
 .accounting-section {
   display: grid;
   gap: 14px;
@@ -487,6 +504,7 @@ h2 {
   background: var(--surface);
   box-shadow: 0 6px 18px rgba(40, 34, 28, 0.035);
 }
+
 
 .section-heading {
   display: flex;
@@ -985,10 +1003,12 @@ h2 {
 
 .modal {
   width: min(620px, calc(100% - 28px));
+  max-width: 100vw;
   padding: 0;
   border: 0;
   border-radius: 16px;
   background: transparent;
+  overflow: hidden;
 }
 
 .modal::backdrop {
@@ -1304,4 +1324,23 @@ textarea:focus {
 
 .add-item-btn {
   width: 100%;
+}
+
+/* Modal 在手機上強制單欄，避免時間欄位超出 */
+@media (max-width: 640px) {
+  .modal {
+    width: calc(100% - 20px);
+  }
+
+  .modal .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal .full {
+    grid-column: auto;
+  }
+
+  .modal-card {
+    padding: 16px;
+  }
 }
