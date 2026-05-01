@@ -1576,3 +1576,17 @@ textarea:focus {
 .note-item.menu-open .note-menu {
   display: block;
 }
+
+.note-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.note-content {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
