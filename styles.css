@@ -191,15 +191,16 @@ h2 {
 .tab-button {
   min-height: 40px;
   border-radius: 999px;
-  background: var(--surface-muted);
+  background: var(--surface);
   color: var(--muted-strong);
-  border-color: transparent;
-  box-shadow: none;
+  border-color: var(--line);
+  box-shadow: 0 4px 12px rgba(40, 34, 28, 0.06);
   font-weight: 700;
 }
 
 .tab-button:hover {
-  background: #e9e7e2;
+  background: var(--surface-soft);
+  border-color: var(--line-strong);
   transform: translateY(-1px);
 }
 
@@ -351,6 +352,9 @@ h2 {
   gap: 12px;
   padding: 16px;
   background: var(--surface-soft);
+  /* 上方兩個直角 → 改為圓角 */
+  border-radius: var(--radius);
+  margin: 0;
 }
 
 .notes-panel {
@@ -1022,6 +1026,10 @@ h2 {
   border-radius: 16px;
   box-shadow: 0 22px 58px rgba(40, 34, 28, 0.16);
   padding: 20px;
+  overflow: hidden;
+  /* 確保內容不超出 modal 邊界 */
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .modal-header {
@@ -1173,15 +1181,23 @@ textarea:focus {
     margin-bottom: 18px;
   }
 
-  .primary-button,
-  .ghost-button,
-  .tab-button {
+  /* 頁面上的按鈕全寬，但 modal 內的按鈕維持 auto */
+  .app-shell .primary-button,
+  .app-shell .ghost-button {
     width: 100%;
   }
 
-  .day-tabs .tab-button {
+  .tab-button {
     width: auto;
   }
+
+  /* modal 內按鈕不強制全寬 */
+  .modal .primary-button,
+  .modal .ghost-button {
+    width: auto;
+  }
+
+
 
   .day-card,
   .itinerary-item,
