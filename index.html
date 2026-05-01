@@ -10,7 +10,10 @@
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="icons/app-icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="icons/app-icon-192.png" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -18,6 +21,11 @@
       <div>
         <p class="eyebrow">Singapore Trip Planner</p>
         <h1><span aria-hidden="true">✈️</span> 新加坡四天旅遊行程</h1>
+      </div>
+      <!-- 同步狀態指示器 -->
+      <div class="sync-status">
+        <span id="syncIndicator" class="sync-indicator connecting" title="正在連線…"></span>
+        <span class="sync-label">即時同步</span>
       </div>
     </header>
 
@@ -68,7 +76,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
   <script>
     if ("serviceWorker" in navigator) {
       let refreshing = false;
