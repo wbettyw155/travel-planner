@@ -941,13 +941,13 @@ function renderNote(note) {
       <p class="note-content">${escapeHtml(note.content)}</p>
       <div class="note-menu-wrap">
         <button
-          class="note-menu-button"
+          class="expense-dot-btn"
           type="button"
           data-action="toggle-note-menu"
           aria-haspopup="menu"
           aria-expanded="false"
           aria-label="開啟備註操作選單"
-        >⋯</button>
+        >⋮</button>
         <div class="note-menu" role="menu">
           <button type="button" data-action="edit-note" role="menuitem">編輯</button>
           <button class="danger-menu-item" type="button" data-action="delete-note" role="menuitem">刪除</button>
@@ -1156,18 +1156,12 @@ function toggleNoteMenu(noteElement, button) {
   if (!wasOpen) {
     noteElement.classList.add("menu-open");
     button.setAttribute("aria-expanded", "true");
-    positionNoteMenu(noteElement, button);
   }
 }
 
 function closeNoteMenus() {
   dayView.querySelectorAll(".note-item.menu-open").forEach((noteElement) => {
     noteElement.classList.remove("menu-open");
-    const menu = noteElement.querySelector(".note-menu");
-    if (menu) {
-      menu.style.removeProperty("top");
-      menu.style.removeProperty("left");
-    }
     noteElement
       .querySelectorAll("[data-action='toggle-note-menu']")
       .forEach((button) => button.setAttribute("aria-expanded", "false"));

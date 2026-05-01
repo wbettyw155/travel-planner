@@ -1552,3 +1552,27 @@ textarea:focus {
 .expense-menu .danger-menu-item {
   color: var(--danger);
 }
+
+/* 備註選單改為 absolute 定位，緊貼三點按鈕下方 */
+.note-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 300;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(40, 34, 28, 0.14);
+  overflow: hidden;
+  min-width: 100px;
+}
+
+.note-menu-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.note-item.menu-open .note-menu {
+  display: block;
+}
