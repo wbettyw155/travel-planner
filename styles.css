@@ -516,6 +516,23 @@ h2 {
   gap: 10px;
 }
 
+/* 成員輸入行：輸入框＋按鈕並排，手機也維持並排 */
+.inline-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.inline-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+.inline-form .primary-button {
+  flex-shrink: 0;
+  width: auto !important;
+}
+
 .member-list {
   display: flex;
   flex-wrap: wrap;
@@ -588,6 +605,62 @@ h2 {
   height: 16px;
   padding: 0;
   accent-color: #789b7a;
+}
+
+/* 誰要分攤：pill 標籤並排，不換行 */
+.participant-fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffdfb;
+  padding: 12px 14px;
+  margin: 0;
+}
+
+.participant-fieldset legend {
+  padding: 0 6px;
+  color: var(--muted-strong);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.participant-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.participant-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted-strong);
+  font-size: 0.88rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.14s ease, border-color 0.14s ease, color 0.14s ease;
+  /* 不換行 */
+  white-space: nowrap;
+}
+
+.participant-check:has(input:checked) {
+  background: var(--sage-soft);
+  border-color: rgba(95, 119, 95, 0.3);
+  color: #5f775f;
+  font-weight: 750;
+}
+
+.participant-check input {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  accent-color: #789b7a;
+  flex-shrink: 0;
 }
 
 .expense-form-actions {
@@ -967,6 +1040,8 @@ textarea {
   color: var(--text);
   padding: 11px 12px;
   outline: none;
+  /* 防止 iOS 點擊 input 時自動放大頁面 */
+  font-size: max(16px, 1em);
 }
 
 select {
@@ -1094,6 +1169,15 @@ textarea:focus {
     border-radius: 16px;
   }
 
+  /* 修正 modal 表單在手機上不換欄，避免時間欄位超出 */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
   .item-summary {
     grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-areas:
@@ -1146,10 +1230,78 @@ textarea:focus {
     width: 100%;
   }
 }
+/* ─── 同步狀態指示器 ─────────────────────────────────────────────── */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sync-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.sync-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+}
 
 .sync-indicator {
   display: inline-block;
   width: 8px;
   height: 8px;
-  ...
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+/* 連線中（橘黃閃爍） */
+.sync-indicator.connecting {
+  background-color: #f0a44e;
+  animation: sync-blink 1.2s ease-in-out infinite;
+}
+
+/* 已連線（綠色） */
+.sync-indicator.connected {
+  background-color: #5cb87a;
+  animation: none;
+}
+
+/* 錯誤（紅色閃爍） */
+.sync-indicator.error {
+  background-color: var(--danger);
+  animation: sync-blink 0.6s ease-in-out infinite;
+}
+
+/* 收到遠端更新時的脈衝動畫 */
+.sync-indicator.pulse {
+  animation: sync-pulse 0.8s ease-out forwards !important;
+}
+
+@keyframes sync-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+@keyframes sync-pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  40%  { transform: scale(2.2); opacity: 0.8; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* ─── 新增行程按鈕（day-card footer） ──────────────────────────── */
+.day-card-footer {
+  padding: 0 20px 20px;
+}
+
+.add-item-btn {
+  width: 100%;
 }
