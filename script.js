@@ -71,7 +71,7 @@ const defaultTrip = {
 };
 
 // ─── Supabase 初始化 ──────────────────────────────────────────────
-let supabase = null;
+let supabaseClient = null;
 let realtimeChannel = null;
 // 用來防止自己發出的廣播又觸發自己更新
 let isSavingToSupabase = false;
@@ -81,15 +81,15 @@ function initSupabase() {
     console.warn("[Sync] Supabase SDK 未載入，僅使用 localStorage 模式");
     return;
   }
-  supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   console.log("[Sync] Supabase 已初始化");
 }
 
 // ─── 即時同步 ─────────────────────────────────────────────────────
 function subscribeRealtime() {
-  if (!supabase) return;
+  if (!supabaseClient) return;
 
-  realtimeChannel = supabase
+  realtimeChannel = supabaseClient
     .channel(`trip-sync:${TRIP_ID}`)
     .on("broadcast", { event: "trip-updated" }, (payload) => {
       if (isSavingToSupabase) return; // 忽略自己發出的事件
@@ -154,9 +154,9 @@ function showSyncIndicator() {
 
 // ─── 第一次載入：從 Supabase 取得最新資料 ──────────────────────────
 async function fetchTripFromSupabase() {
-  if (!supabase) return null;
+  if (!supabaseClient) return null;
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from("trips")
       .select("data")
       .eq("id", TRIP_ID)
@@ -173,9 +173,9 @@ async function fetchTripFromSupabase() {
 }
 
 async function saveTripToSupabase() {
-  if (!supabase) return;
+  if (!supabaseClient) return;
   try {
-    await supabase
+    await supabaseClient
       .from("trips")
       .upsert({ id: TRIP_ID, data: trip, updated_at: new Date().toISOString() });
   } catch (err) {
@@ -208,7 +208,7 @@ async function init() {
 
   initSupabase();
 
-  if (supabase) {
+  if (supabaseClient) {
     // 從 Supabase 取最新資料
     const remoteData = await fetchTripFromSupabase();
     if (remoteData) {
