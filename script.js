@@ -1180,7 +1180,6 @@ function toggleExpenseMenu(expenseElement, button) {
   if (!wasOpen) {
     expenseElement.classList.add("menu-open");
     button.setAttribute("aria-expanded", "true");
-    positionExpenseMenu(expenseElement, button);
   }
 }
 
