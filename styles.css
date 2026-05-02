@@ -233,7 +233,7 @@ h2 {
 }
 
 .day-card {
-  overflow: hidden;
+  overflow: visible;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -351,6 +351,7 @@ h2 {
   gap: 12px;
   padding: 16px;
   background: var(--surface-soft);
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .notes-panel {
