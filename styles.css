@@ -390,8 +390,11 @@ h2 {
 }
 
 .note-item {
-  position: relative;
-  padding: 16px 54px 16px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--surface);
@@ -406,6 +409,8 @@ h2 {
 }
 
 .note-content {
+  flex: 1;
+  min-width: 0;
   margin: 0;
   color: var(--muted-strong);
   line-height: 1.7;
@@ -414,9 +419,9 @@ h2 {
 }
 
 .note-menu-wrap {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: relative;
+  flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .note-menu-button {
@@ -440,9 +445,9 @@ h2 {
 }
 
 .note-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
   z-index: 999;
   display: none;
   width: min(132px, calc(100vw - 16px));
@@ -1553,40 +1558,4 @@ textarea:focus {
   color: var(--danger);
 }
 
-/* 備註選單改為 absolute 定位，緊貼三點按鈕下方 */
-.note-menu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 4px);
-  right: 0;
-  z-index: 300;
-  background: var(--surface);
-  border: 1px solid var(--line-strong);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(40, 34, 28, 0.14);
-  overflow: hidden;
-  min-width: 100px;
-}
 
-.note-menu-wrap {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.note-item.menu-open .note-menu {
-  display: block;
-}
-
-.note-item {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.note-content {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-}
