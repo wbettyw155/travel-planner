@@ -291,12 +291,14 @@ dayView.addEventListener("click", (event) => {
   if (action === "toggle-note-menu") {
     const noteElement = actionButton.closest("[data-note-id]");
     if (noteElement) toggleNoteMenu(noteElement, actionButton);
+    event.stopPropagation();
     return;
   }
 
   if (action === "toggle-expense-menu") {
     const expenseElement = actionButton.closest("[data-expense-id]");
     if (expenseElement) toggleExpenseMenu(expenseElement, actionButton);
+    event.stopPropagation();
     return;
   }
 
