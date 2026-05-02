@@ -445,9 +445,11 @@ h2 {
 }
 
 .note-menu {
-  position: fixed;
-  z-index: 9999;
   display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 300;
   width: min(132px, calc(100vw - 16px));
   padding: 6px;
   border: 1px solid var(--line);

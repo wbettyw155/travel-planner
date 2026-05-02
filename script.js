@@ -1158,13 +1158,6 @@ function toggleNoteMenu(noteElement, button) {
   if (!wasOpen) {
     noteElement.classList.add("menu-open");
     button.setAttribute("aria-expanded", "true");
-    // 用 fixed 定位，計算按鈕位置讓選單緊貼在下方
-    const menu = noteElement.querySelector(".note-menu");
-    if (menu) {
-      const rect = button.getBoundingClientRect();
-      menu.style.top = `${rect.bottom + 4}px`;
-      menu.style.right = `${window.innerWidth - rect.right}px`;
-    }
   }
 }
 
