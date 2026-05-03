@@ -20,14 +20,18 @@ const defaultTrip = {
     {
       id: "day-1",
       label: "Day1",
-      theme: "抵達＋市區",
+      theme: "抵達＋市區觀光",
       totalCost: "",
       items: [
-        createItem("14:00", "抵達新加坡", "", ""),
-        createItem("16:00", "魚尾獅公園（Merlion Park）", "", ""),
-        createItem("17:30", "濱海灣花園（Garden by the Bay）", "", ""),
-        createItem("19:30", "老巴剎（Lau Pa Sat）晚餐", "", ""),
-        createItem("20:30", "金沙燈光秀", "", "")
+        createItem("12:40", "抵達新加坡", "", ""),
+        createItem("14:00", "入住飯店 Vibe Hotel Singapore Orchard", "", ""),
+        createItem("15:00", "午餐（烏節路 Orchard Road 附近）", "", ""),
+        createItem("16:00", "哈芝巷（Haji Lane）", "", ""),
+        createItem("17:00", "財富噴泉（Fountain of Wealth, Suntec City）", "", ""),
+        createItem("17:45", "魚尾獅公園（Merlion Park）看日落", "", ""),
+        createItem("18:30", "濱海灣花園（Gardens by the Bay）", "", ""),
+        createItem("19:45", "超級樹燈光秀（Supertree Grove Light Show）", "", ""),
+        createItem("21:00", "晚餐", "", "")
       ]
     },
     {
@@ -36,23 +40,27 @@ const defaultTrip = {
       theme: "聖淘沙／環球影城",
       totalCost: "",
       items: [
-        createItem("09:00", "出發前往聖淘沙", "", ""),
         createItem("10:00", "環球影城（Universal Studios Singapore）", "", ""),
-        createItem("18:00", "晚餐（VivoCity）", "", ""),
-        createItem("19:30", "海灘散步", "", "")
+        createItem("17:30", "西樂索海灘（Siloso Beach）", "", ""),
+        createItem("18:30", "巴拉旺海灘（Palawan Beach）", "", ""),
+        createItem("19:30", "聖淘沙晚餐", "", ""),
+        createItem("20:30", "聖淘沙海濱步道（Sentosa Boardwalk）", "", ""),
+        createItem("21:00", "翅膀時光秀（Wings of Time）", "", "")
       ]
     },
     {
       id: "day-3",
       label: "Day3",
-      theme: "文化＋購物",
+      theme: "文化巡禮",
       totalCost: "",
       items: [
-        createItem("09:30", "阿拉伯區（Haji Lane）", "", ""),
-        createItem("11:30", "小印度（Little India）", "", ""),
-        createItem("13:00", "Tekka Centre午餐", "", ""),
-        createItem("15:00", "牛車水（Chinatown）", "", ""),
-        createItem("18:00", "Orchard Road購物", "", "")
+        createItem("10:30", "福康寧公園（Fort Canning Park）", "", ""),
+        createItem("11:30", "新加坡國家美術館（National Gallery Singapore）", "", ""),
+        createItem("13:00", "牛車水（Chinatown）午餐", "", ""),
+        createItem("14:30", "佛牙寺龍華院（Buddha Tooth Relic Temple）", "", ""),
+        createItem("15:30", "小印度（Little India）", "", ""),
+        createItem("17:00", "竹腳中心小吃（Tekka Centre）", "", ""),
+        createItem("18:30", "自由活動", "", "")
       ]
     },
     {
@@ -61,10 +69,10 @@ const defaultTrip = {
       theme: "咖啡＋回程",
       totalCost: "",
       items: [
-        createItem("09:00", "Tiong Bahru咖啡區", "", ""),
+        createItem("09:00", "丹戎巴葛咖啡區（Tiong Bahru）", "", ""),
         createItem("11:30", "午餐", "", ""),
-        createItem("14:00", "前往機場", "", ""),
-        createItem("16:00", "Jewel樟宜機場", "", "")
+        createItem("14:00", "前往樟宜機場", "", ""),
+        createItem("16:00", "星耀樟宜（Jewel Changi Airport）", "", "")
       ]
     }
   ]
